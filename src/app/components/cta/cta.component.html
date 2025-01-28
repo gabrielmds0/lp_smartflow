@@ -1,76 +1,104 @@
 <!-- cta-form.component.html -->
-<section id = "cta-section"class="relative py-16 bg-gradient-to-b from-blue-600 to-indigo-700 sm:py-24">
-    <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-white/5 to-transparent"></div>
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center animate-fade-in-up">
-        <h2 class="text-3xl font-bold text-white sm:text-4xl">
-          Comece sua transformação digital hoje
-        </h2>
-        <p class="mt-4 text-lg text-indigo-100">
-          Nossos especialistas entrarão em contato em até 24 horas
-        </p>
-      </div>
-  
-      <form class="max-w-2xl mx-auto mt-12 animate-fade-in-up delay-100">
-        <div class="grid gap-6 sm:grid-cols-2">
-          <!-- Nome -->
-          <div class="space-y-2">
-            <label for="name" class="block text-sm font-medium text-white">Nome completo</label>
-            <input type="text" id="name" 
-                   class="block w-full px-4 py-3 text-gray-900 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
-                   required>
+<section class="relative py-16 bg-gradient-to-b from-blue-600 to-indigo-700 sm:py-24">
+  <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-white/5 to-transparent"></div>
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center animate-fade-in-up">
+      <h2 class="text-3xl font-bold text-white sm:text-4xl">
+        Comece sua transformação digital hoje
+      </h2>
+      <p class="mt-4 text-lg text-indigo-100">
+        Nossos especialistas entrarão em contato em até 24 horas
+      </p>
+    </div>
+    <form class="max-w-2xl mx-auto mt-12 p-8 bg-white/5 backdrop-blur-lg rounded-2xl shadow-xl animate-fade-in-up delay-100 border border-white/10" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+      <div class="grid gap-8 sm:grid-cols-2">
+        <!-- Nome -->
+        <div class="space-y-3">
+          <label for="name" class="block text-sm font-medium text-white/90 tracking-wide">Nome completo</label>
+          <input type="text" id="name" formControlName="name"
+                 class="block w-full px-4 py-3.5 text-gray-900 bg-white/90 rounded-xl shadow-inner border border-white/20 placeholder-gray-400 transition-all duration-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white hover:bg-white/95"
+                 required>
+          <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" 
+               class="text-red-400 text-xs font-medium ml-1 animate-fade-in">
+            Nome é obrigatório.
           </div>
-  
-          <!-- Email -->
-          <div class="space-y-2">
-            <label for="email" class="block text-sm font-medium text-white">E-mail</label>
-            <input type="email" id="email" 
-                   class="block w-full px-4 py-3 text-gray-900 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
-                   required>
+        </div>
+        <!-- Email -->
+        <div class="space-y-3">
+          <label for="email" class="block text-sm font-medium text-white/90 tracking-wide">E-mail</label>
+          <input type="email" id="email" formControlName="email"
+                 class="block w-full px-4 py-3.5 text-gray-900 bg-white/90 rounded-xl shadow-inner border border-white/20 placeholder-gray-400 transition-all duration-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white hover:bg-white/95"
+                 required>
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" 
+               class="text-red-400 text-xs font-medium ml-1 animate-fade-in">
+            E-mail válido é obrigatório.
           </div>
-  
-          <!-- Telefone -->
-          <div class="space-y-2 sm:col-span-2">
-            <label for="phone" class="block text-sm font-medium text-white">Telefone</label>
-            <input type="tel" id="phone" 
-                   class="block w-full px-4 py-3 text-gray-900 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
-                   required>
+        </div>
+        <!-- Telefone -->
+        <div class="space-y-3 sm:col-span-2">
+          <label for="phone" class="block text-sm font-medium text-white/90 tracking-wide">Telefone</label>
+          <input type="tel" id="phone" formControlName="phone"
+                 class="block w-full px-4 py-3.5 text-gray-900 bg-white/90 rounded-xl shadow-inner border border-white/20 placeholder-gray-400 transition-all duration-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white hover:bg-white/95"
+                 required>
+          <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" 
+               class="text-red-400 text-xs font-medium ml-1 animate-fade-in">
+            Telefone é obrigatório.
           </div>
-  
-          <!-- Mensagem -->
-          <div class="space-y-2 sm:col-span-2">
-            <label for="message" class="block text-sm font-medium text-white">Mensagem</label>
-            <textarea id="message" rows="4"
-                      class="block w-full px-4 py-3 text-gray-900 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
-                      placeholder="Descreva brevemente o motivo do seu contato"></textarea>
-          </div>
-  
-          <!-- Termos -->
-          <div class="sm:col-span-2">
-            <div class="flex items-center">
-              <input id="terms" type="checkbox" 
-                     class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-              <label for="terms" class="block ml-3 text-sm text-white">
+        </div>
+        <!-- Mensagem -->
+        <div class="space-y-3 sm:col-span-2">
+          <label for="message" class="block text-sm font-medium text-white/90 tracking-wide">Mensagem</label>
+          <textarea id="message" rows="4" formControlName="message"
+                    class="block w-full px-4 py-3.5 text-gray-900 bg-white/90 rounded-xl shadow-inner border border-white/20 placeholder-gray-400 transition-all duration-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white hover:bg-white/95"
+                    placeholder="Descreva brevemente o motivo do seu contato"></textarea>
+        </div>
+        <!-- Termos -->
+        <div class="sm:col-span-2">
+          <div class="flex items-start space-x-3 group">
+            <input id="terms" type="checkbox" formControlName="terms"
+                   class="w-5 h-5 mt-0.5 text-blue-500 border-white/20 rounded-md focus:ring-blue-400 focus:ring-offset-0 bg-white/90 transition-all duration-200">
+            <div class="flex flex-col">
+              <label for="terms" class="text-sm text-white/90">
                 Concordo com os 
-                <a href="#" class="font-medium text-indigo-100 underline hover:text-white">
+                <a href="#" class="font-medium text-blue-400 hover:text-blue-300 transition-colors duration-200 underline decoration-2 underline-offset-2">
                   termos de privacidade
                 </a>
               </label>
+              <div *ngIf="contactForm.get('terms')?.invalid && contactForm.get('terms')?.touched" 
+                   class="text-red-400 text-xs font-medium mt-1 animate-fade-in">
+                Você deve concordar com os termos de privacidade.
+              </div>
             </div>
           </div>
-  
-          <!-- Botão -->
-          <div class="sm:col-span-2">
-            <button type="submit"
-                    class="inline-flex items-center justify-center w-full px-6 py-4 text-lg font-medium text-white transition-all bg-gradient-to-r from-blue-400 to-indigo-500 rounded-lg hover:from-blue-500 hover:to-indigo-600 shadow-lg hover:shadow-xl">
+        </div>
+        <!-- Botão e Mensagens -->
+        <div class="sm:col-span-2 space-y-4">
+          <button type="submit" [disabled]="isLoading"
+                  class="relative w-full px-6 py-4 text-lg font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl hover:from-blue-600 hover:to-indigo-700 shadow-lg hover:shadow-blue-500/25 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:shadow-none group overflow-hidden">
+            <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span *ngIf="!isLoading" class="inline-flex items-center">
               Enviar Mensagem
-            </button>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </span>
+            <span *ngIf="isLoading" class="inline-flex items-center">
+              <svg class="w-5 h-5 mr-2 animate-spin" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+              </svg>
+              Enviando...
+            </span>
+          </button>
+          <div *ngIf="errorMessage" 
+               class="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-300 text-center text-sm animate-fade-in">
+            {{ errorMessage }}
           </div>
         </div>
-      </form>
-  
-      <!-- Elementos decorativos -->
-      <div class="absolute bottom-0 right-0 w-32 h-32 -mb-12 -mr-12 bg-indigo-300 rounded-full opacity-20"></div>
-      <div class="absolute top-0 right-0 w-24 h-24 -mt-12 -mr-12 bg-blue-300 rounded-full opacity-20"></div>
-    </div>
-  </section>
+      </div>
+    </form>
+    <!-- Elementos decorativos -->
+    <div class="absolute bottom-0 right-0 w-32 h-32 -mb-12 -mr-12 bg-indigo-300 rounded-full opacity-20"></div>
+    <div class="absolute top-0 right-0 w-24 h-24 -mt-12 -mr-12 bg-blue-300 rounded-full opacity-20"></div>
+  </div>
+</section>
