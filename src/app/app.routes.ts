@@ -1,8 +1,9 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { CtaComponent } from './components/cta/cta.component';
+import { HomeComponent } from './home/home.component';
+import { NegociosComponent } from './negocios/negocios.component';
 
 export const routes: Routes = [
-  { path: '', component: CtaComponent },
-  { path: '**', redirectTo: '' } // Redirect unknown paths to home
+    { path: '', component: HomeComponent },
+    { path: 'negocios', component: NegociosComponent },
+    { path: '**', redirectTo: '' }
 ];

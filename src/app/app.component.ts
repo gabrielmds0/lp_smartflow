@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './components/header/header.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { SocialComponent } from './components/social/social.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { CtaComponent } from './components/cta/cta.component';
-import { FeaturesComponent } from './components/features/features.component';
+import { RouterOutlet, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-root',
-    imports: [HeaderComponent, HeroComponent, SocialComponent, FooterComponent, CtaComponent, FeaturesComponent],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css'
+    standalone: true,
+    imports: [RouterOutlet, CommonModule, RouterModule],
+    template: `
+        <router-outlet></router-outlet>
+    `
 })
 export class AppComponent {
   title = 'lp_dataflow';
+ 
+
 }
