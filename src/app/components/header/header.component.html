@@ -1,40 +1,75 @@
 <header class="bg-white shadow-sm fixed w-full z-50">
   <nav class="mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-          <!-- Left side: Logo and Title -->
-          <div class="flex items-center">
-              <img href="#"src="/smartflow_logo.svg" alt="SmartFlow Logo" class="h-25 w-25 -mr-4">
-              
-              <!-- Container para título e subtítulo -->
-              <div class="flex flex-col ml-2">
-                  <a href="#" class="text-2xl font-bold text-black">Cronus</a>
-                  <a href="#"> <span class="text-nowrap text-gray-500">Technical Solutions</span></a>
-              </div>
-          </div>
-
-          <!-- Right side: Navigation Menu and Contact Button -->
-          <div class="flex items-center gap-8">
-              <!-- Solutions Dropdown -->
-              <div class="group relative">
-                  <button class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
-                      Soluções
-                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                      </svg>
-                  </button>
-                  <!-- Dropdown Content -->
-                  <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg py-2 min-w-[200px]">
-                      <a routerLink="/negocios" class="block px-6 py-2 text-gray-700 hover:bg-gray-50">Automação WhatsApp</a>    
-                      <a routerLink="/marketing" class="block px-6 py-2 text-gray-700 hover:bg-gray-50">Marketing</a>                      
-                  
-                  </div>
-              </div>
-
-              <!-- Contact Button -->
-              <a href="#cta-section" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors transform hover:scale-105">
-                  Contato
-              </a>
-          </div>
+    <div class="flex justify-between items-center h-16 md:h-20">
+      <!-- Left side: Logo and Title -->
+      <div class="flex items-center flex-shrink-0">
+        <img src="/smartflow_logo.svg" alt="SmartFlow Logo" class="h-12 w-12 md:h-20 md:w-20">
+        <div class="flex flex-col ml-2 md:ml-4">
+          <a href="#" class="text-xl md:text-2xl font-bold text-black">Cronus</a>
+          <a href="#" class="hidden md:block">
+            <span class="text-gray-500 text-sm">Technical Solutions</span>
+          </a>
+        </div>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button
+          #mobileMenuButton
+          (click)="toggleMobileMenu()"
+          class="text-gray-600 hover:text-blue-600"
+        >
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-6 lg:gap-8">
+        <!-- Solutions Dropdown -->
+        <div class="group relative">
+          <button class="flex items-center text-gray-600 hover:text-blue-600 transition-colors">
+            Soluções
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <!-- Dropdown Content -->
+          <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg py-2 min-w-[200px]">
+            <a routerLink="/negocios" class="block px-6 py-2 text-gray-700 hover:bg-gray-50">Automação WhatsApp</a>    
+            <a routerLink="/marketing" class="block px-6 py-2 text-gray-700 hover:bg-gray-50">Marketing</a>
+          </div>
+        </div>
+
+        <!-- Contact Button -->
+        <a href="#cta-section" class="bg-blue-600 text-white px-4 py-2 md:px-6 rounded-full hover:bg-blue-700 transition-colors transform hover:scale-105 text-sm md:text-base">
+          Contato
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      #mobileMenu
+      [class.hidden]="!isMobileMenuOpen"
+      class="md:hidden py-4 space-y-4"
+    >
+      <div class="space-y-2">
+        <button class="flex items-center w-full text-gray-600 hover:text-blue-600">
+          Soluções
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="ml-4 space-y-2">
+          <a routerLink="/negocios" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Automação WhatsApp</a>
+          <a routerLink="/marketing" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Marketing</a>
+        </div>
+      </div>
+      <a href="#cta-section" class="block w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors text-center">
+        Contato
+      </a>
+    </div>
   </nav>
 </header>
